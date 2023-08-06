@@ -24,16 +24,17 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomPaint(
+        size: Size.infinite,
         painter: SquareCustomPainter(),
-        child: Column(
-          children: [
-            Text('Hello from the other side')
-            // Expanded(
-            //     child: Container(
-            //         // color: Colors.teal,
-            //         ))
-          ],
-        ),
+        // child: Column(
+        //   children: [
+        //     // Text('Hello from the other side')
+        //     // Expanded(
+        //     //     child: Container(
+        //     //         // color: Colors.teal,
+        //     //         ))
+        //   ],
+        // ),
       ),
     );
   }
@@ -51,6 +52,13 @@ class SquareCustomPainter extends CustomPainter {
     path.close();
 
     canvas.drawPath(path, paint);
+    canvas.drawLine(
+        Offset(20, size.height / 2),
+        Offset(size.width - 20, size.height / 2),
+        paint
+          ..color = Colors.black
+          ..strokeWidth = 5);
+    // canvas.close();
     canvas.drawCircle(Offset(size.width / 2, size.height / 2), size.width / 4,
         Paint()..color = Colors.yellow);
   }
