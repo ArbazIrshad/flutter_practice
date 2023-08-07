@@ -43,15 +43,21 @@ class HomePage extends StatelessWidget {
 class SquareCustomPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()..color = const Color(0xFF006600);
-    final path = Path();
+    final paint = Paint()..color = const Color(0xFF006600)
+        // ..strokeWidth = 40
+        // ..strokeCap = StrokeCap.round
+        // ..strokeJoin = StrokeJoin.bevel
+        // ..style = PaintingStyle.stroke
+        ;
+    // final path = Path();
+    final shapeBounds = Rect.fromLTRB(0, 0, size.width, size.height / 2);
+    canvas.drawRect(shapeBounds, paint);
+    // path.lineTo(size.width, 0);
+    // path.lineTo(size.width, size.height / 2);
+    // path.lineTo(0, size.height / 2);
+    // path.close();
 
-    path.lineTo(size.width, 0);
-    path.lineTo(size.width, size.height / 2);
-    path.lineTo(0, size.height / 2);
-    path.close();
-
-    canvas.drawPath(path, paint);
+    // canvas.drawPath(path, paint);
     canvas.drawLine(
         Offset(20, size.height / 2),
         Offset(size.width - 20, size.height / 2),
